@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'; // This is fine if the file exists
-import PlayerList from './components/PlayerList';
-import AddPlayer from './components/AddPlayer';
+import PlayerList from './PlayerList';
+import AddPlayer from './AddPlayer';
 
 function App() {
   return (

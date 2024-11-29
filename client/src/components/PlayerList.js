@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPlayers } from '../api';
+import { fetchPlayers } from './api';
 
 const PlayerList = () => {
     const [players, setPlayers] = useState([]);
