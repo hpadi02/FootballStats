@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPlayer } from './api'; // Correct path for api.js in the same folder
+import { createPlayer } from './api';
 
 const AddPlayer = () => {
     const [formData, setFormData] = useState({ name: '', position: '', team: '' });
@@ -7,8 +7,8 @@ const AddPlayer = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await createPlayer(formData);
-            setFormData({ name: '', position: '', team: '' });
+            await createPlayer(formData); // Call API to create a player
+            setFormData({ name: '', position: '', team: '' }); // Clear form after success
             alert('Player added successfully!');
         } catch (error) {
             console.error('Error adding player:', error);
