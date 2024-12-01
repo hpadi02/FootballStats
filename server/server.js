@@ -1,22 +1,21 @@
-const express = require('express'); // Import express
-const cors = require('cors');      // Import cors
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+const connectDB = require('./config/db'); // Import the connectDB function
 
-const app = express();             // Initialize the express application
+const app = express();
 
 // Middleware
-app.use(cors());                   // Use CORS to allow requests from other origins
-app.use(express.json());           // Parse JSON payloads
+app.use(cors());
+app.use(express.json());
 
-// Example Route
-app.get('/api/players', (req, res) => {
-    res.json([
-        { id: 1, name: 'John Doe', position: 'Quarterback', team: 'Team A' },
-        { id: 2, name: 'Jane Smith', position: 'Wide Receiver', team: 'Team B' },
-    ]);
-});
+// Connect to MongoDB
+connectDB(); // Use the imported connection function
 
-// Start the Server
-const PORT = 5001;                 // Specify the port
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Routes
+const playersRouter = require('./routes/players');
+app.use('/api/players', playersRouter); // Ensure this mounts the route
+
+// Start server
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
