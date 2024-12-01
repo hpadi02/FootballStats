@@ -16,8 +16,8 @@ const PlayerList = () => {
         <div>
             <h1>Players</h1>
             <ul>
-                {players.map((player) => (
-                    <li key={player._id}>{player.name} - {player.position}</li>
+                {players.map((player, index) => (
+                    <li key={player._id || index}>{player.name} - {player.position}</li>
                 ))}
             </ul>
         </div>

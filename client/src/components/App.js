@@ -1,17 +1,21 @@
-import React from 'react';
-import './App.css'; // This is fine if the file exists
-import PlayerList from './PlayerList';
-import AddPlayer from './AddPlayer';
+import React, { useState } from 'react';
+import './App.css';
+import SearchBar from './Searchbar';
+import PlayerStats from './Playerstats';
 
 function App() {
+  const [player, setPlayer] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>American Football Stats</h1>
+        <h1>Football Stats</h1>
       </header>
       <main>
-        <AddPlayer />
-        <PlayerList />
+        {/* Pass setPlayer to SearchBar */}
+        <SearchBar setPlayerData={setPlayer} />
+        {/* Display PlayerStats */}
+        <PlayerStats player={player} />
       </main>
     </div>
   );
